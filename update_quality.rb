@@ -4,7 +4,13 @@ def update_quality(awards)
   awards.each do |award|
     if award.name != 'Blue First' && award.name != 'Blue Compare'
       if award.quality > 0
-        if award.name != 'Blue Distinction Plus'
+        if award.name == 'Blue Star'
+          if award.quality > 2
+            award.quality -= 2
+          else 
+            award.quality = 0
+          end 
+        elsif award.name != 'Blue Distinction Plus'
           award.quality -= 1
         end
       end
@@ -33,7 +39,15 @@ def update_quality(awards)
         if award.name != 'Blue Compare'
           if award.quality > 0
             if award.name != 'Blue Distinction Plus'
-              award.quality -= 1
+              if award.name == 'Blue Star'
+                if award.quality > 2
+                  award.quality -= 2
+                else
+                  award.quality = 0
+                end
+              else
+                award.quality -= 1
+              end
             end
           end
         else
